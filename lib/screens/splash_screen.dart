@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:movie_app/screens/home_screen.dart';
+import 'package:movie_app/widgets/bottom_navbar.dart';
 
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({super.key});
@@ -66,6 +66,6 @@ class _Circular_SplashState extends State<Circular_Splash> {
       Duration(seconds: 1),
     );
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Home_Screen()));
+        context, MaterialPageRoute(builder: (context) => Bottom_Screen()));
   }
 }
