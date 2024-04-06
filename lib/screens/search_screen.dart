@@ -88,10 +88,6 @@ class _SearchpageState extends State<Search_Screen> {
                           snapshot: widget.snapshot,
                           searchResults: searchResults,
                           imageUrl: imageUrl)
-              // : Search_Items_Screen(
-              //     // snapshot: AsyncSnapshot.waiting(),
-              //     searchResults: searchResults,
-              //     imageUrl: imageUrl)
             ],
           ),
         ),

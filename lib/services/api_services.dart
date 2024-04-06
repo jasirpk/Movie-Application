@@ -54,41 +54,6 @@ class ApiServices {
     }
   }
 
-  Future<List<SearchModel>> getSearchResults(String name) async {
-    final searchurl = '/search/multi?query=$name&';
-    final headers = {
-      'Authorization':
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NTAyYjhjMDMxYzc5NzkwZmU1YzBiNGY5NGZkNzcwZCIsInN1YiI6IjYzMmMxYjAyYmE0ODAyMDA4MTcyNjM5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N1SoB26LWgsA33c-5X0DT5haVOD4CfWfRhwpDu9eGkc",
-      'accept': 'application/json',
-    };
-    try {
-      final response = await http.get(
-        Uri.parse('https://api.themoviedb.org/3$searchurl${Constants.apiKey}'),
-        headers: headers,
-      );
-
-      if (response.statusCode == 200) {
-        final decodedResult = jsonDecode(response.body)['results'] as List?;
-
-        if (decodedResult != null) {
-          final results = decodedResult
-              .map((result) => SearchModel.fromJson(result))
-              .toList();
-          return results;
-        } else {
-          // Handle case where 'results' is null
-          throw Exception("Results are null");
-        }
-      } else {
-        // Handle HTTP error status code
-        throw Exception("HTTP Error: ${response.statusCode}");
-      }
-    } catch (e) {
-      // Handle other exceptions
-      throw Exception("Error fetching search results: $e");
-    }
-  }
-
   // Future<List<SearchModel>> getSearchResults(String name) async {
   //   final searchurl = '/search/multi?query=$name&';
   //   final headers = {
@@ -96,15 +61,50 @@ class ApiServices {
   //         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NTAyYjhjMDMxYzc5NzkwZmU1YzBiNGY5NGZkNzcwZCIsInN1YiI6IjYzMmMxYjAyYmE0ODAyMDA4MTcyNjM5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N1SoB26LWgsA33c-5X0DT5haVOD4CfWfRhwpDu9eGkc",
   //     'accept': 'application/json',
   //   };
-  //   final response = await http.get(
-  //     Uri.parse('https://api.themoviedb.org/3$searchurl${Constants.apiKey}'),
-  //     headers: headers,
-  //   );
-  //   final decodedResult = jsonDecode(response.body)['results'] as List;
+  //   try {
+  //     final response = await http.get(
+  //       Uri.parse('https://api.themoviedb.org/3$searchurl${Constants.apiKey}'),
+  //       headers: headers,
+  //     );
 
-  //   final results =
-  //       decodedResult.map((result) => SearchModel.fromJson(result)).toList();
+  //     if (response.statusCode == 200) {
+  //       final decodedResult = jsonDecode(response.body)['results'] as List?;
 
-  //   return results;
+  //       if (decodedResult != null) {
+  //         final results = decodedResult
+  //             .map((result) => SearchModel.fromJson(result))
+  //             .toList();
+  //         return results;
+  //       } else {
+  //         // Handle case where 'results' is null
+  //         throw Exception("Results are null");
+  //       }
+  //     } else {
+  //       // Handle HTTP error status code
+  //       throw Exception("HTTP Error: ${response.statusCode}");
+  //     }
+  //   } catch (e) {
+  //     // Handle other exceptions
+  //     throw Exception("Error fetching search results: $e");
+  //   }
   // }
+
+  Future<List<SearchModel>> getSearchResults(String name) async {
+    final searchurl = '/search/multi?query=$name&';
+    final headers = {
+      'Authorization':
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NTAyYjhjMDMxYzc5NzkwZmU1YzBiNGY5NGZkNzcwZCIsInN1YiI6IjYzMmMxYjAyYmE0ODAyMDA4MTcyNjM5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N1SoB26LWgsA33c-5X0DT5haVOD4CfWfRhwpDu9eGkc",
+      'accept': 'application/json',
+    };
+    final response = await http.get(
+      Uri.parse('https://api.themoviedb.org/3$searchurl${Constants.apiKey}'),
+      headers: headers,
+    );
+    final decodedResult = jsonDecode(response.body)['results'] as List;
+
+    final results =
+        decodedResult.map((result) => SearchModel.fromJson(result)).toList();
+
+    return results;
+  }
 }
