@@ -41,8 +41,7 @@ class Welcome_Netflix extends StatelessWidget {
                   width: 100,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image:
-                              AssetImage("assets/images/netflix_welcome.jpg"))),
+                          image: AssetImage("assets/netflix_welcome.jpg"))),
                 ),
               ),
               SizedBox(

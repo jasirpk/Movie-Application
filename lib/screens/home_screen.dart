@@ -39,7 +39,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Column(
               children: [
                 SizedBox(
@@ -81,6 +81,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                           );
                         } else {
                           return Movie_Slider_Screen(
+                            scrolDirection: Axis.horizontal,
                             snapshot: snapshot,
                             headLineText: 'Top rated movies',
                           );
@@ -107,6 +108,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                           );
                         } else {
                           return Movie_Slider_Screen(
+                            scrolDirection: Axis.horizontal,
                             snapshot: snapshot,
                             headLineText: 'Upcoming movies',
                           );

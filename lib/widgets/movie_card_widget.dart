@@ -4,9 +4,13 @@ import 'package:movie_app/screens/detail_screen.dart';
 
 class Movie_Slider_Screen extends StatelessWidget {
   const Movie_Slider_Screen(
-      {super.key, required this.snapshot, required this.headLineText});
+      {super.key,
+      required this.snapshot,
+      required this.headLineText,
+      required this.scrolDirection});
   final AsyncSnapshot snapshot;
   final String headLineText;
+  final Axis scrolDirection;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +27,7 @@ class Movie_Slider_Screen extends StatelessWidget {
           height: 200,
           width: double.infinity,
           child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+              scrollDirection: scrolDirection,
               physics: BouncingScrollPhysics(),
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {

@@ -67,6 +67,8 @@ flutter:
   assets:
     - assets/netflix.json
     - assets/netflix-logo.webp
+    - assets/BrandAssets_Logos_02-NSymbol.jpg
+    - assets/netflix_welcome.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

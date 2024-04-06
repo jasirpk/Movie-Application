@@ -44,7 +44,9 @@ class _Home_ScreenState extends State<Bottom_Screen> {
         body: TabBarView(
           children: [
             Home_Screen(),
-            Search_Screen(),
+            Search_Screen(
+              snapshot: AsyncSnapshot.waiting(),
+            ),
             NewAndHot_Screen(),
           ],
         ),
