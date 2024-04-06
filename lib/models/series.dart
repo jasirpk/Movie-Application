@@ -16,11 +16,11 @@ class Series {
       required this.firstAirDate});
 
   factory Series.fromjason(Map<String, dynamic> json) => Series(
-        name: json['name'],
-        posterImage: json['poster_path'],
-        overview: json['overview'],
-        coverImage: json['backdrop_path'],
-        popularity: json['popularity'],
-        firstAirDate: json['first_air_date'],
+        name: json['name'] ?? '',
+        posterImage: json['poster_path'] ?? '',
+        overview: json['overview'] ?? '',
+        coverImage: json['backdrop_path'] ?? '',
+        popularity: json['popularity'] ?? 0.0,
+        firstAirDate: json['first_air_date'] ?? '',
       );
 }

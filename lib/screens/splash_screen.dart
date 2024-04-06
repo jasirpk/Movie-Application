@@ -3,8 +3,6 @@ import 'package:lottie/lottie.dart';
 import 'package:movie_app/widgets/bottom_navbar.dart';
 
 class Splash_Screen extends StatefulWidget {
-  const Splash_Screen({super.key});
-
   @override
   State<Splash_Screen> createState() => _Splash_ScreenState();
 }
@@ -66,6 +64,6 @@ class _Circular_SplashState extends State<Circular_Splash> {
       Duration(seconds: 1),
     );
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Bottom_Screen()));
+        context, MaterialPageRoute(builder: (context) => BottomScreen()));
   }
 }

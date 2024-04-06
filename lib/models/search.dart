@@ -12,13 +12,13 @@ class SearchModel {
       if (json['media_type'] == 'movie') {
         return SearchModel(
             movie: Movie(
-                title: json['title'],
-                backDropPath: json['backdrop_path'],
-                oringinalTitl: json['original_title'],
-                overView: json['overview'],
-                posterPath: json['poster_path'],
-                releaseDate: json['release_date'],
-                voteAverage: json['vote_average']));
+                title: json['title'] ?? '',
+                backDropPath: json['backdrop_path'] ?? '',
+                oringinalTitl: json['original_title'] ?? '',
+                overView: json['overview'].toString(),
+                posterPath: json['poster_path'] ?? '',
+                releaseDate: json['release_date'] ?? '',
+                voteAverage: json['vote_average']?.toDouble() ?? 0.0));
       } else if (json['media_type'] == 'tv') {
         return SearchModel(
           series: Series(

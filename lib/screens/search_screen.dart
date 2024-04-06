@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/search.dart';
 import 'package:movie_app/services/api_services.dart';
-import 'package:movie_app/widgets/movie_card_widget.dart';
+import 'package:movie_app/widgets/popular_widget.dart';
 import 'package:movie_app/widgets/search_item.dart';
 
 class Search_Screen extends StatefulWidget {
@@ -61,36 +61,37 @@ class _SearchpageState extends State<Search_Screen> {
                 ),
               ),
               searchcontroller.text.isEmpty
-                  ? SizedBox(
-                      child: FutureBuilder(
-                          future: topratedMovies,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasError) {
-                              return Center(
-                                child: Text(snapshot.error.toString()),
-                              );
-                            } else if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 5.0,
-                                ),
-                              );
-                            } else {
-                              return Movie_Slider_Screen(
-                                scrolDirection: Axis.vertical,
-                                snapshot: snapshot,
-                                headLineText: 'Top Searched movies',
-                              );
-                            }
-                          }),
-                    )
+                  ? FutureBuilder(
+                      future: topratedMovies,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text(snapshot.error.toString()),
+                          );
+                        } else if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 5.0,
+                            ),
+                          );
+                        } else {
+                          return Popular_widget_Screen(
+                            snapshot: snapshot,
+                            headLineText: "Top Searched Movies",
+                          );
+                        }
+                      })
                   : searchResults == null
                       ? SizedBox.shrink()
                       : Search_Items_Screen(
-                          snapshot: AsyncSnapshot.waiting(),
+                          snapshot: widget.snapshot,
                           searchResults: searchResults,
                           imageUrl: imageUrl)
+              // : Search_Items_Screen(
+              //     // snapshot: AsyncSnapshot.waiting(),
+              //     searchResults: searchResults,
+              //     imageUrl: imageUrl)
             ],
           ),
         ),
